@@ -30,10 +30,11 @@ public class DBService {
 		Player player2 = new Player(null, "Claudio Modric", new Date(), unity1);
 		Player player3 = new Player(null, "Mateus Dybala", new Date(), unity1);
 		Player player4 = new Player(null, "VR7", new Date(), unity2);
+		Player player5 = new Player(null, "Mateus Dybala", new Date(), unity2);
 
-		unity1.getPlayers().addAll(Arrays.asList(player1,player2,player3,player4));
+		unity1.getPlayers().addAll(Arrays.asList(player1,player2,player3,player4,player5));
 
 		this.unityRepository.saveAll(Arrays.asList(unity1,unity2));
-		this.playerRepository.saveAll(Arrays.asList(player1,player2,player3,player4));
+		this.playerRepository.saveAll(Arrays.asList(player1,player2,player3,player4,player5));
 	}
 }
