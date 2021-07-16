@@ -22,7 +22,7 @@ public class Unity implements Serializable{
 	private String name;
 	private String description;
 
-	@OneToMany(mappedBy = "categoria")
+	@OneToMany(mappedBy = "unity")
 	private List<Player> players = new ArrayList<>();
 
 	public Unity() {

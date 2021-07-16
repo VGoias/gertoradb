@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.sb.gestoradb.domain.Unity;
 
-// TODO study Repository
+// TODO study @Repository
 @Repository
 public interface UnityRepository extends JpaRepository<Unity, Integer>{
 
