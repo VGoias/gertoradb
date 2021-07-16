@@ -1,5 +1,6 @@
 package com.sb.gestoradb.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,5 +19,9 @@ public class UnityService {
 	public Unity findById(Integer id) {
 		Optional<Unity> obj = repository.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException("Procurei em tudo e não encontrei registros para o(s) filtro(s) "+id+". [INFOTEC: Tipo "+Unity.class.getName()+"]"));
+	}
+	
+	public List<Unity> findAll(){
+		return repository.findAll();
 	}
 }
