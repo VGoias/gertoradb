@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Player implements Serializable{
 
@@ -22,6 +24,7 @@ public class Player implements Serializable{
 	private String nick;
 	private Date birth;
 
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "unity_id")
 	private Unity unity;
