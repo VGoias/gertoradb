@@ -33,10 +33,10 @@ public class UnityService {
 		return repository.save(obj);
 	}
 	
-	public Unity update(Integer id, UnityDTO objDTO) {
+	public Unity update(Integer id, UnityDTO objDto) {
 		Unity obj = findById(id);
-		obj.setName(objDTO.getName());
-		obj.setDescription(objDTO.getDescription());
+		obj.setName(objDto.getName());
+		obj.setDescription(objDto.getDescription());
 
 		return repository.save(obj);
 	}
