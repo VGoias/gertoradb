@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.sb.gestoradb.domain.Unity;
@@ -39,5 +40,14 @@ public class UnityService {
 		obj.setDescription(objDto.getDescription());
 
 		return repository.save(obj);
+	}
+	
+	public void delete(Integer id) {
+		findById(id);
+		try {
+			repository.deleteById(id);
+		}catch (DataIntegrityViolationException e) {
+			throw new com.sb.gestoradb.service.exceptions.DataIntegrityViolationException("A Unidade não pode ser deletada porque já possui um histórico de uso.");
+		}
 	}
 }

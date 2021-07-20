@@ -1,4 +1,4 @@
-package com.sb.gestoradb.service.exceptions;
+package com.sb.gestoradb.resources.exceptions;
 
 public class StandartError {
 
