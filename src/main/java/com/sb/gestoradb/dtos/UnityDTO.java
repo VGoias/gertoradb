@@ -46,8 +46,4 @@ public class UnityDTO implements Serializable{
 		this.description = description;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-	
 }
