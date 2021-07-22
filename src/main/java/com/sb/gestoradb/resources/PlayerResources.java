@@ -4,8 +4,11 @@ import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -23,6 +26,7 @@ import com.sb.gestoradb.dtos.PlayerDTO;
 import com.sb.gestoradb.service.PlayerService;
 
 //TODO study @RestController
+@CrossOrigin("*")
 @RestController
 @RequestMapping(value = "/players")
 public class PlayerResources {
@@ -47,7 +51,7 @@ public class PlayerResources {
 	}
 	
 	@PostMapping
-	public ResponseEntity<Player> create(@RequestParam(value = "unity", defaultValue = "0") Integer id_unity, @RequestBody Player obj){		
+	public ResponseEntity<Player> create(@RequestParam(value = "unity", defaultValue = "0") Integer id_unity,@Valid @RequestBody Player obj){		
 		
 		Player newObj = service.create(id_unity, obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/players/{id}").buildAndExpand(newObj.getId()).toUri();
@@ -56,14 +60,14 @@ public class PlayerResources {
 	}
 	
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<PlayerDTO> update(@PathVariable Integer id, @RequestBody PlayerDTO objDto){
+	public ResponseEntity<PlayerDTO> update(@PathVariable Integer id,@Valid @RequestBody PlayerDTO objDto){
 		Player newObj = service.update(id, objDto);
 		
 		return ResponseEntity.ok().body(new PlayerDTO(newObj));
 	}
 	
 	@PatchMapping(value = "/{id}")
-	public ResponseEntity<PlayerDTO> updatePatch(@PathVariable Integer id, @RequestBody PlayerDTO objDto){
+	public ResponseEntity<PlayerDTO> updatePatch(@PathVariable Integer id,@Valid @RequestBody PlayerDTO objDto){
 		Player newObj = service.update(id, objDto);
 		
 		return ResponseEntity.ok().body(new PlayerDTO(newObj));

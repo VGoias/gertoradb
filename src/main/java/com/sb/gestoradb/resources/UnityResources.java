@@ -4,8 +4,11 @@ import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,6 +24,7 @@ import com.sb.gestoradb.dtos.UnityDTO;
 import com.sb.gestoradb.service.UnityService;
 
 //TODO study @RestController
+@CrossOrigin("*")
 @RestController
 @RequestMapping(value = "/unities")
 public class UnityResources {
@@ -45,7 +49,7 @@ public class UnityResources {
 	}
 	
 	@PostMapping
-	public ResponseEntity<Unity> create(@RequestBody Unity obj){		
+	public ResponseEntity<Unity> create(@Valid @RequestBody Unity obj){		
 		obj = service.create(obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
 		
@@ -53,7 +57,7 @@ public class UnityResources {
 	}
 	
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<UnityDTO> update(@PathVariable Integer id, @RequestBody UnityDTO objDto){
+	public ResponseEntity<UnityDTO> update(@PathVariable Integer id,@Valid @RequestBody UnityDTO objDto){
 		Unity newObj = service.update(id, objDto);
 		
 		return ResponseEntity.ok().body(new UnityDTO(newObj));
