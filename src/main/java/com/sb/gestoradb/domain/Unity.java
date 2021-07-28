@@ -14,8 +14,6 @@ import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
 public class Unity implements Serializable{
 	
