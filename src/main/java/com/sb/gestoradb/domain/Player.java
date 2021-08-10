@@ -30,6 +30,8 @@ public class Player implements Serializable{
 	private String nick;
 
 	private Date birth;
+	
+	private String bio;
 
 	@JsonIgnore
 	@ManyToOne
@@ -40,11 +42,12 @@ public class Player implements Serializable{
 		super();
 	}
 
-	public Player(Integer id, String nick, Date birth, Unity unity) {
+	public Player(Integer id, String nick, Date birth, String bio, Unity unity) {
 		super();
 		this.id = id;
 		this.nick = nick;
 		this.birth = birth;
+		this.bio = bio;
 		this.unity = unity;
 	}
 
@@ -78,6 +81,14 @@ public class Player implements Serializable{
 
 	public void setUnity(Unity unity) {
 		this.unity = unity;
+	}
+
+	public String getBio() {
+		return bio;
+	}
+
+	public void setBio(String bio) {
+		this.bio = bio;
 	}
 
 	@Override

@@ -19,6 +19,9 @@ public class PlayerDTO implements Serializable{
 	private String nick;
 	@NotEmpty(message = "A Data de nascimento é importante para diferenciar você de outros jogadores.")
 	private Date birth;
+	@NotEmpty(message = "As características do jogador são necessárias. Ex: Velocista; Artilheiro; Armador; Jogador Consistente; ...")
+	@Length(min=6, max=100000, message = "O valor informado deve conter entre 3 e 100.000 caracteres. Por Favor, digite algo capaz de descrever o jogador.")
+	private String bio;
 	
 	public PlayerDTO() {
 		super();
@@ -29,6 +32,7 @@ public class PlayerDTO implements Serializable{
 		this.id = obj.getId();
 		this.nick = obj.getNick();
 		this.birth = obj.getBirth();
+		this.bio = obj.getBio();
 	}
 
 	public Integer getId() {
@@ -54,5 +58,13 @@ public class PlayerDTO implements Serializable{
 	public void setBirth(Date birth) {
 		this.birth = birth;
 	}
-	
+
+	public String getBio() {
+		return bio;
+	}
+
+	public void setBio(String bio) {
+		this.bio = bio;
+	}
+		
 }
